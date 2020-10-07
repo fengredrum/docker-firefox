@@ -128,6 +128,10 @@ ENV APP_NAME="Firefox"
 # Define mountable directories.
 VOLUME ["/config"]
 
+# Install Chinese fonts
+RUN echo @edge http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && apk add wqy-zenhei@edge
+RUN apk add wqy-zenhei --update-cache --repository http://nl.alpinelinux.org/alpine/edge/testing --allow-untrusted
+
 # Metadata.
 LABEL \
       org.label-schema.name="firefox" \
